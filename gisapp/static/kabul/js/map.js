@@ -18,10 +18,11 @@ const map = new ol.Map({
 console.log("نسخه OpenLayers:", ol.VERSION);
 
 // تابع برای اضافه کردن لایه WMS از جئوسرور
-const geoserverUrl = '/geoserver/';  // Update to use Django proxy
+// Update GeoServer URL to use Django proxy with wms endpoint
+const geoserverUrl = '/geoserver_proxy/wms';  // Add wms endpoint
 
-// Fix the WMS layer function syntax
 function addWMSLayer(url, layerName, title, visible = true) {
+    // In your WMS source configuration
     const wmsSource = new ol.source.TileWMS({
         url: geoserverUrl,
         params: {
@@ -30,17 +31,23 @@ function addWMSLayer(url, layerName, title, visible = true) {
             'FORMAT': 'image/png',
             'TRANSPARENT': true,
             'VERSION': '1.3.0',
+            'SERVICE': 'WMS'
         },
-        serverType: 'geoserver',
-        crossOrigin: 'anonymous'  // Move this inside the source options
+        serverType: 'geoserver'
     });
 
     const wmsLayer = new ol.layer.Tile({
         source: wmsSource,
         visible: visible,
-        title: title,  // Add title to layer properties
-        type: 'wms',   // Add type to layer properties
-        name: layerName // Add name to layer properties
+        title: title,
+        type: 'wms',
+        name: layerName,
+        opacity: 0.7  // Add some transparency to see the base map
+    });
+
+    // Add error handling for source
+    wmsSource.on('tileloaderror', function(event) {
+        console.error('Tile loading error for layer:', layerName, event);
     });
 
     map.addLayer(wmsLayer);
@@ -48,11 +55,11 @@ function addWMSLayer(url, layerName, title, visible = true) {
     return wmsLayer;
 }
 
-// Fix the event listener
+// Update the event listener
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("Adding WMS layers from:", geoserverUrl);  // Use geoserverUrl instead of GEOSERVER_URL
+    console.log("Adding WMS layers from:", geoserverUrl);
 
-    // Add WMS layers using the proxy URL
+    // Add WMS layers using proxy URL
     addWMSLayer(geoserverUrl, "cite:Hospital", "شفاخانه");
     addWMSLayer(geoserverUrl, "cite:Kabul_22District", "۲۲ ناحیه کابل");
     addWMSLayer(geoserverUrl, "cite:Kabul_Area_name", "مناطق کابل");

@@ -111,24 +111,56 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
-# Update the geoserver_proxy function to include authentication check
 @login_required
 def geoserver_proxy(request):
     """
-    Proxy for GeoServer requests with authentication check
+    Proxy for GeoServer WMS/WFS requests
     """
-    if not request.session.get('jwt_token'):
-        return HttpResponse('Unauthorized', status=401)
-
-    geoserver_url = 'http://localhost:8080/geoserver/wms'
+    geoserver_url = "http://localhost:8080/geoserver/wms"
     
-    # Forward the request to GeoServer
-    response = requests.get(geoserver_url, params=request.GET)
+    # Get request parameters
+    params = request.GET.dict()
+    request_type = params.get('REQUEST', '').lower()
     
-    # Return the response from GeoServer
-    return HttpResponse(
-        response.content,
-        content_type=response.headers['Content-Type'],
-        status=response.status_code
-    )
+    # Modify request for GetFeatureInfo
+    if request_type == 'getfeatureinfo':
+        params.update({
+            'REQUEST': 'GetFeatureInfo',
+            'INFO_FORMAT': 'application/json',
+            'FEATURE_COUNT': '10'
+        })
+    
+    try:
+        response = requests.get(
+            geoserver_url,
+            params=params,
+            stream=True,
+            timeout=30
+        )
+        
+        logger.debug(f"GeoServer URL: {response.url}")
+        logger.debug(f"GeoServer status: {response.status_code}")
+        
+        if response.status_code == 200:
+            # Set correct content type based on request type
+            content_type = ('application/json' if request_type == 'getfeatureinfo' 
+                          else response.headers.get('content-type', 'image/png'))
+            
+            django_response = HttpResponse(
+                response.content,
+                content_type=content_type
+            )
+            
+            # Add CORS headers
+            django_response['Access-Control-Allow-Origin'] = '*'
+            django_response['Access-Control-Allow-Methods'] = 'GET, OPTIONS'
+            
+            return django_response
+            
+        logger.error(f"GeoServer error {response.status_code}: {response.text}")
+        return HttpResponse(status=response.status_code)
+            
+    except Exception as e:
+        logger.error(f"Proxy error: {str(e)}")
+        return HttpResponse(status=500)
 
