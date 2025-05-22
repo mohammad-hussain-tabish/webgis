@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{% static 'kabul/style.css' %}" />
     <div class="search-box">
       <div class="search-button"></div>
-      <input class="search-input" placeholder="جستجو" type="text">
+      <input class="search-input" placeholder="جستجو" type="text" />
     </div>
     <!-- استایل‌های داخلی -->
     <style>
@@ -42,7 +42,7 @@
         background-color: transparent;
         transition: width 0.3s ease, margin-right 0.3s ease;
       }
-      
+
       body.body-shifted .header {
         width: 70%;
         margin-right: 30%;
@@ -59,17 +59,7 @@
       .identify,
       .measurement-control,
       .search-box,
-      .user-button {
-        margin: 5px;
-        padding: 5px;
-        transition: right 0.3s ease, margin-right 0.3s ease;
-      }
-      
       body.body-shifted .layer-switcher,
-      body.body-shifted .user-button {
-        margin-right: 30%;
-      }
-
       .search-input {
         padding: 5px;
         margin: 5px;
@@ -77,7 +67,7 @@
         border-radius: 4px;
       }
 
-      .logo{
+      .logo {
         background-color: white;
         border-radius: 40px;
       }
@@ -94,7 +84,7 @@
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
         z-index: 1000;
         direction: rtl;
-        font-family: 'Tahoma', sans-serif;
+        font-family: "Tahoma", sans-serif;
         display: none;
       }
 
@@ -147,7 +137,7 @@
         border-radius: 3px;
         padding: 5px;
         resize: vertical;
-        font-family: 'Tahoma', sans-serif;
+        font-family: "Tahoma", sans-serif;
         direction: rtl;
       }
 
@@ -163,7 +153,7 @@
         border: none;
         border-radius: 3px;
         cursor: pointer;
-        font-family: 'Tahoma', sans-serif;
+        font-family: "Tahoma", sans-serif;
       }
 
       .save-btn {
@@ -184,14 +174,14 @@
       .sticky-note.minimized .sticky-note-footer {
         display: none;
       }
-      
+
       /* دکمه شناور برای باز/بسته کردن پنل یادداشت */
       .note-toggle-button {
         position: fixed;
-        top: 50px;
-        left: 20px;
-        width: 50px;
-        height: 50px;
+        top: 90px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
         background-color: #4caf50;
         border-radius: 50%;
         color: white;
@@ -204,20 +194,20 @@
         border: none;
         font-size: 24px;
       }
-      
+
       .note-toggle-button:hover {
         background-color: #45a049;
       }
-      
+
       /* استایل‌های identify */
       .identify {
         position: relative;
       }
-      
+
       .identify__icon {
         cursor: pointer;
       }
-      
+
       .identify__content {
         display: none;
         position: fixed;
@@ -234,25 +224,25 @@
         box-sizing: border-box;
         overflow-y: auto;
       }
-      
+
       .identify.active .identify__content {
         display: block;
       }
-      
+
       /* استایل‌های مربوط به بخش عکس در پنل identify */
       .identify__layout {
         display: flex;
         height: calc(100% - 40px);
         flex-direction: column;
       }
-      
+
       .identify__data {
         flex: 1;
         padding-right: 10px;
         overflow-y: auto;
         margin-bottom: 20px;
       }
-      
+
       .identify__photo-panel {
         width: 100%;
         border-top: 1px solid #ccc;
@@ -261,7 +251,7 @@
         flex-direction: column;
         height: 50%;
       }
-      
+
       .identify__photo-container {
         flex: 1;
         display: flex;
@@ -269,14 +259,14 @@
         align-items: center;
         overflow-y: auto;
       }
-      
+
       .identify__photo {
         max-width: 100%;
         max-height: 300px;
         margin-bottom: 10px;
         border: 1px solid #ddd;
       }
-      
+
       .identify__photo-info {
         width: 100%;
         padding: 10px;
@@ -285,19 +275,19 @@
         border-radius: 4px;
         margin-top: 10px;
       }
-      
+
       .identify__header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 10px;
       }
-      
+
       .identify__title {
         font-weight: bold;
         font-size: 18px;
       }
-      
+
       .identify__add-photo {
         background-color: #4caf50;
         color: white;
@@ -306,13 +296,11 @@
         padding: 5px 10px;
         cursor: pointer;
       }
-      
+
       .identify__add-photo:hover {
         background-color: #45a049;
       }
-      
 
-      
       /* استایل‌های مودال آپلود عکس */
       .photo-modal {
         display: none;
@@ -326,11 +314,11 @@
         align-items: center;
         justify-content: center;
       }
-      
+
       .photo-modal.active {
         display: flex;
       }
-      
+
       .photo-modal__content {
         background-color: white;
         padding: 20px;
@@ -338,39 +326,39 @@
         width: 500px;
         max-width: 90%;
       }
-      
+
       .photo-modal__header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 15px;
       }
-      
+
       .photo-modal__title {
         font-weight: bold;
         font-size: 18px;
       }
-      
+
       .photo-modal__close {
         background: none;
         border: none;
         font-size: 20px;
         cursor: pointer;
       }
-      
+
       .photo-modal__form {
         display: flex;
         flex-direction: column;
         gap: 15px;
       }
-      
+
       .photo-modal__preview {
         max-width: 100%;
         max-height: 200px;
         margin: 10px 0;
         display: none;
       }
-      
+
       .photo-modal__description {
         width: 100%;
         height: 100px;
@@ -379,7 +367,7 @@
         border: 1px solid #ddd;
         border-radius: 4px;
       }
-      
+
       .photo-modal__submit {
         background-color: #4caf50;
         color: white;
@@ -388,17 +376,27 @@
         padding: 10px;
         cursor: pointer;
       }
-      
+
       .photo-modal__submit:hover {
         background-color: #45a049;
+      }
+
+      .layer-switcher {
+        transition: right 0.3s ease;
       }
 
       /* تنظیم موقعیت ابزارها */
       .tools {
         transition: right 0.3s ease;
       }
-      
+
+      body.body-shifted .search-box {
+        display: none;
+      }
       body.body-shifted .tools {
+        right: 30%;
+      }
+      body.body-shifted .layer-switcher {
         right: 30%;
       }
 
@@ -418,16 +416,17 @@
         direction: rtl;
         text-align: right;
       }
-      
-      .identify__attributes th, .identify__attributes td {
+
+      .identify__attributes th,
+      .identify__attributes td {
         border: 1px solid #ddd;
         padding: 8px;
       }
-      
+
       .identify__attributes th {
         background-color: #f2f2f2;
       }
-      
+
       .identify__layer-title {
         font-weight: bold;
         font-size: 16px;
@@ -436,20 +435,22 @@
         border-bottom: 1px solid #ccc;
         padding-bottom: 5px;
       }
-      
+
       .identify__feature {
         margin-bottom: 20px;
       }
-      
-      .loading, .no-results, .error {
+
+      .loading,
+      .no-results,
+      .error {
         padding: 10px;
         text-align: center;
       }
-      
+
       .error {
         color: red;
       }
-      
+
       /* استایل‌های لایه سوییچر */
       .layer-switcher__icon {
         width: 30px;
@@ -463,12 +464,12 @@
         background-position: center;
         background-repeat: no-repeat;
       }
-      
+
       .layer-switcher__content {
         display: none;
         position: absolute;
         top: 40px;
-        right: 10px;
+        right: 50px;
         width: 250px;
         background-color: white;
         border-radius: 4px;
@@ -479,39 +480,45 @@
         max-height: 400px;
         overflow-y: auto;
       }
-      
+
       .layer-switcher.active .layer-switcher__content {
         display: block;
       }
-      
+
       .layer-item {
         display: flex;
         align-items: center;
         margin-bottom: 8px;
       }
-      
+
       .layer-item label {
         margin-right: 8px;
         flex: 1;
         cursor: pointer;
       }
-      
+
       .layer-title {
         font-weight: bold;
         margin-bottom: 5px;
       }
-
     </style>
   </head>
 
   <body>
     <!-- هدر با لوگوها -->
     <div class="header">
-      <img class="logo" src="{% static 'kabul/images/WhatsApp_Image_2025-05-15_at_9.52.25_AM-removebg-preview.png' %}" alt="MOHE Logo"/>
+      <img
+        class="logo"
+        src="{% static 'kabul/images/WhatsApp_Image_2025-05-15_at_9.52.25_AM-removebg-preview.png' %}"
+        alt="MOHE Logo"
+      />
 
       <h1>نقشه گردشگری شهر کابل</h1>
-   <img class="logo" src="{% static 'kabul/images/New_GE_Logo_1-removebg-preview.png' %}" alt="KPU Logo" />
-
+      <img
+        class="logo"
+        src="{% static 'kabul/images/New_GE_Logo_1-removebg-preview.png' %}"
+        alt="KPU Logo"
+      />
     </div>
 
     <!-- دکمه شناور برای باز/بسته کردن پنل یادداشت -->
@@ -527,7 +534,10 @@
         </div>
       </div>
       <div class="sticky-note-content">
-        <textarea id="noteContent" placeholder="یادداشت خود را اینجا بنویسید..."></textarea>
+        <textarea
+          id="noteContent"
+          placeholder="یادداشت خود را اینجا بنویسید..."
+        ></textarea>
       </div>
       <div class="sticky-note-footer">
         <button class="save-btn" id="saveNote">ذخیره</button>
@@ -537,85 +547,113 @@
 
     <!-- نقشه OpenLayers -->
     <div id="map">
-    <div class="layer-switcher">
+      <div class="layer-switcher">
         <div class="layer-switcher-container">
           <div class="layer-switcher__icon"></div>
         </div>
         <div class="layer-switcher__content"></div>
-    </div>
-    <div class="tooltip-bottom"></div>
+      </div>
+      <div class="tooltip-bottom"></div>
       <div class="search-box">
         <div class="search-button"></div>
         <input class="search-input" placeholder="جستجو" type="text" />
       </div>
     </div>
-    
+
     <div class="tools">
-      
       <div class="drawing-control">
-          <div class="user-button"></div>
-          <div class="drawing-control__icon drawing-control__icon--toggler"></div>
-          <div class="drawing-control__icon drawing-control__icon--point"></div>
-          <div class="drawing-control__icon drawing-control__icon--line"></div>
-          <div class="drawing-control__icon drawing-control__icon--polygon"></div>
-          <div class="drawing-control__icon drawing-control__icon--finish"></div>
-          <div class="drawing-control__icon drawing-control__icon--clear"></div>
+        <div class="drawing-control__icon drawing-control__icon--toggler"></div>
+        <div class="drawing-control__icon drawing-control__icon--point"></div>
+        <div class="drawing-control__icon drawing-control__icon--line"></div>
+        <div class="drawing-control__icon drawing-control__icon--polygon"></div>
+        <div class="drawing-control__icon drawing-control__icon--finish"></div>
+        <div class="drawing-control__icon drawing-control__icon--clear"></div>
       </div>
-      
+
       <div class="measurement-control">
-          <div class="measurement-control__icon measurement-control__icon--toggler"></div>
-          <div class="measurement-control__icon measurement-control__icon--distance"></div>
-          <div class="measurement-control__icon measurement-control__icon--area"></div>
+        <div
+          class="measurement-control__icon measurement-control__icon--toggler"
+        ></div>
+        <div
+          class="measurement-control__icon measurement-control__icon--distance"
+        ></div>
+        <div
+          class="measurement-control__icon measurement-control__icon--area"
+        ></div>
       </div>
 
       <div class="identify">
-          <div class="identify__icon"></div>
-          <div class="identify__content">
-              <div class="identify__header">
-                  <div class="identify__title">اطلاعات عارضه</div>
-              </div>
-              <div class="identify__layout">
-                  <div class="identify__data">
-              <div class="identify__select">
-                      </div>
-                      <div class="identify__result"></div>
-                  </div>
-                  <div class="identify__photo-panel">
-                      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                          <h3>عکس‌ها</h3>
-                          <button class="identify__add-photo" id="addPhotoBtn">افزودن عکس</button>
-                      </div>
-                      <div class="identify__photo-container" id="photoContainer">
-                          <!-- عکس‌ها اینجا نمایش داده می‌شوند -->
-                          <div class="identify__no-photo">هیچ عکسی برای این عارضه وجود ندارد</div>
-                      </div>
-                  </div>
-              </div>
+        <div class="identify__icon"></div>
+        <div class="identify__content">
+          <div class="identify__header">
+            <div class="identify__title">اطلاعات عارضه</div>
           </div>
+          <div class="identify__layout">
+            <div class="identify__data">
+              <div class="identify__select"></div>
+              <div class="identify__result"></div>
+            </div>
+            <div class="identify__photo-panel">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-bottom: 10px;
+                "
+              >
+                <h3>عکس‌ها</h3>
+                <button class="identify__add-photo" id="addPhotoBtn">
+                  افزودن عکس
+                </button>
+              </div>
+              <div class="identify__photo-container" id="photoContainer">
+                <!-- عکس‌ها اینجا نمایش داده می‌شوند -->
+                <div class="identify__no-photo">
+                  هیچ عکسی برای این عارضه وجود ندارد
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      
     </div>
 
     <!-- مودال آپلود عکس -->
     <div class="photo-modal" id="photoModal">
-        <div class="photo-modal__content">
-            <div class="photo-modal__header">
-                <div class="photo-modal__title">افزودن عکس جدید</div>
-                <button class="photo-modal__close" id="closeModalBtn">&times;</button>
-            </div>
-            <form class="photo-modal__form" id="photoUploadForm" enctype="multipart/form-data">
-                <div>
-                    <label for="photoFile">انتخاب عکس:</label>
-                    <input type="file" id="photoFile" name="photo" accept="image/*" required>
-                </div>
-                <img class="photo-modal__preview" id="photoPreview">
-                <div>
-                    <label for="photoDescription">توضیحات عکس:</label>
-                    <textarea class="photo-modal__description" id="photoDescription" name="description" placeholder="توضیحات عکس را وارد کنید..."></textarea>
-                </div>
-                <button type="submit" class="photo-modal__submit">آپلود عکس</button>
-            </form>
+      <div class="photo-modal__content">
+        <div class="photo-modal__header">
+          <div class="photo-modal__title">افزودن عکس جدید</div>
+          <button class="photo-modal__close" id="closeModalBtn">&times;</button>
         </div>
+        <form
+          class="photo-modal__form"
+          id="photoUploadForm"
+          enctype="multipart/form-data"
+        >
+          <div>
+            <label for="photoFile">انتخاب عکس:</label>
+            <input
+              type="file"
+              id="photoFile"
+              name="photo"
+              accept="image/*"
+              required
+            />
+          </div>
+          <img class="photo-modal__preview" id="photoPreview" />
+          <div>
+            <label for="photoDescription">توضیحات عکس:</label>
+            <textarea
+              class="photo-modal__description"
+              id="photoDescription"
+              name="description"
+              placeholder="توضیحات عکس را وارد کنید..."
+            ></textarea>
+          </div>
+          <button type="submit" class="photo-modal__submit">آپلود عکس</button>
+        </form>
+      </div>
     </div>
 
     <!-- اسکریپت OpenLayers -->
@@ -627,8 +665,8 @@
         layers: [
           new ol.layer.Tile({
             source: new ol.source.OSM(),
-            title: 'OpenStreetMap',
-            type: 'base'
+            title: "OpenStreetMap",
+            type: "base",
           }),
         ],
         view: new ol.View({
@@ -638,229 +676,247 @@
       });
 
       // بررسی نسخه OpenLayers در کنسول
-      console.log('نسخه OpenLayers:', ol.VERSION);
-      
+      console.log("نسخه OpenLayers:", ol.VERSION);
+
       // تابع برای اضافه کردن لایه WMS از جئوسرور
       function addWMSLayer(url, layerName, title, visible = true) {
         const wmsSource = new ol.source.TileWMS({
           url: url,
           params: {
-            'LAYERS': layerName,
-            'TILED': true,
-            'FORMAT': 'image/png',
-            'TRANSPARENT': true,
-            'VERSION': '1.3.0'
+            LAYERS: layerName,
+            TILED: true,
+            FORMAT: "image/png",
+            TRANSPARENT: true,
+            VERSION: "1.3.0",
           },
-          serverType: 'geoserver',
-          crossOrigin: 'anonymous'
+          serverType: "geoserver",
+          crossOrigin: "anonymous",
         });
-        
+
         const wmsLayer = new ol.layer.Tile({
           source: wmsSource,
-          visible: visible
+          visible: visible,
         });
-        
+
         // اضافه کردن ویژگی‌های مورد نیاز برای شناسایی
-        wmsLayer.set('type', 'wms');
-        wmsLayer.set('title', title);
-        wmsLayer.set('name', layerName);
-        
+        wmsLayer.set("type", "wms");
+        wmsLayer.set("title", title);
+        wmsLayer.set("name", layerName);
+
         map.addLayer(wmsLayer);
         console.log(`Layer ${title} (${layerName}) added to map`);
         return wmsLayer;
       }
-      
+
       // اضافه کردن لایه‌های WMS پس از اینکه نقشه آماده شد
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener("DOMContentLoaded", function () {
         // آدرس GeoServer - تنظیم آدرس مناسب برای محیط شما
-        const geoserverUrl = '/geoserver_proxy/';  // اگر از پروکسی استفاده می‌کنید
+        const geoserverUrl = "/geoserver_proxy/"; // اگر از پروکسی استفاده می‌کنید
         // یا آدرس مستقیم
         // const geoserverUrl = 'http://localhost:8080/geoserver/wms';
-        
-        console.log('Adding WMS layers from:', geoserverUrl);
-        
+
+        console.log("Adding WMS layers from:", geoserverUrl);
+
         // اضافه کردن لایه‌های موجود در جئوسرور
-        addWMSLayer(geoserverUrl, 'cite:Hospital', 'بیمارستان');
-        addWMSLayer(geoserverUrl, 'cite:Kabul_22District', 'منطقه ۲۲ کابل');
-        addWMSLayer(geoserverUrl, 'cite:Kabul_Area_name', 'مناطق کابل');
-        addWMSLayer(geoserverUrl, 'cite:Kabul_place_name', 'مکان‌های کابل');
+        addWMSLayer(geoserverUrl, "cite:Hospital", "شفاخانه");
+        addWMSLayer(geoserverUrl, "cite:Kabul_22District", "۲۲ ناحیه کابل");
+        addWMSLayer(geoserverUrl, "cite:Kabul_Area_name", "مناطق کابل");
       });
-      
+
       // Create a vector source for the markers
       const markerSource = new ol.source.Vector();
-      
+
       // Create a vector layer for the markers
       const markerLayer = new ol.layer.Vector({
         source: markerSource,
         style: new ol.style.Style({
           image: new ol.style.Icon({
             anchor: [0.5, 1],
-            anchorXUnits: 'fraction',
-            anchorYUnits: 'fraction',
+            anchorXUnits: "fraction",
+            anchorYUnits: "fraction",
             src: '{% static "kabul/images/marker-pin.svg" %}',
-            scale: 1
-          })
-        })
+            scale: 1,
+          }),
+        }),
       });
-      
+
       // Add the marker layer to the map
       map.addLayer(markerLayer);
-      
+
       // Create overlay for popup
-      const popupContainer = document.createElement('div');
-      popupContainer.className = 'ol-popup';
-      popupContainer.style.position = 'absolute';
-      popupContainer.style.backgroundColor = 'white';
-      popupContainer.style.boxShadow = '0 1px 4px rgba(0,0,0,0.2)';
-      popupContainer.style.padding = '15px';
-      popupContainer.style.borderRadius = '10px';
-      popupContainer.style.border = '1px solid #cccccc';
-      popupContainer.style.bottom = '12px';
-      popupContainer.style.left = '-50px';
-      popupContainer.style.minWidth = '150px';
-      popupContainer.style.zIndex = '1000';
-      
-      const popupCloser = document.createElement('a');
-      popupCloser.href = '#';
-      popupCloser.style.position = 'absolute';
-      popupCloser.style.top = '2px';
-      popupCloser.style.right = '8px';
-      popupCloser.style.color = '#999';
-      popupCloser.style.textDecoration = 'none';
-      popupCloser.innerHTML = '✖';
+      const popupContainer = document.createElement("div");
+      popupContainer.className = "ol-popup";
+      popupContainer.style.position = "absolute";
+      popupContainer.style.backgroundColor = "white";
+      popupContainer.style.boxShadow = "0 1px 4px rgba(0,0,0,0.2)";
+      popupContainer.style.padding = "15px";
+      popupContainer.style.borderRadius = "10px";
+      popupContainer.style.border = "1px solid #cccccc";
+      popupContainer.style.bottom = "12px";
+      popupContainer.style.left = "-50px";
+      popupContainer.style.minWidth = "150px";
+      popupContainer.style.zIndex = "1000";
+
+      const popupCloser = document.createElement("a");
+      popupCloser.href = "#";
+      popupCloser.style.position = "absolute";
+      popupCloser.style.top = "2px";
+      popupCloser.style.right = "8px";
+      popupCloser.style.color = "#999";
+      popupCloser.style.textDecoration = "none";
+      popupCloser.innerHTML = "✖";
       popupContainer.appendChild(popupCloser);
-      
-      const popupContent = document.createElement('div');
-      popupContent.style.direction = 'rtl';
+
+      const popupContent = document.createElement("div");
+      popupContent.style.direction = "rtl";
       popupContainer.appendChild(popupContent);
-      
+
       document.body.appendChild(popupContainer);
-      
+
       const popup = new ol.Overlay({
         element: popupContainer,
         autoPan: true,
         autoPanAnimation: {
-          duration: 250
-        }
+          duration: 250,
+        },
       });
-      
+
       map.addOverlay(popup);
-      
+
       // Close popup when closer is clicked
-      popupCloser.onclick = function() {
+      popupCloser.onclick = function () {
         popup.setPosition(undefined);
         popupCloser.blur();
         return false;
       };
-      
+
       // Add marker at the specified coordinates and optionally show popup
       function addMarkerAtCoordinates(coordinates, showPopup = false) {
         // Clear previous markers
         markerSource.clear();
-        
+
         // Create a marker feature at the location
         const marker = new ol.Feature({
-          geometry: new ol.geom.Point(coordinates)
+          geometry: new ol.geom.Point(coordinates),
         });
-        
+
         // Add the marker to the source
         markerSource.addFeature(marker);
-        
+
         if (showPopup) {
           // Get the coordinates in longitude/latitude
-          const lonLat = ol.proj.transform(coordinates, 'EPSG:3857', 'EPSG:4326');
-          
+          const lonLat = ol.proj.transform(
+            coordinates,
+            "EPSG:3857",
+            "EPSG:4326"
+          );
+
           // Show popup with coordinates
           popupContent.innerHTML = `
             <h4>موقعیت انتخاب شده</h4>
             <p>طول جغرافیایی: ${lonLat[0].toFixed(6)}</p>
             <p>عرض جغرافیایی: ${lonLat[1].toFixed(6)}</p>
           `;
-          
+
           popup.setPosition(coordinates);
         } else {
           // Hide popup if showPopup is false
           popup.setPosition(undefined);
         }
       }
-      
+
       // Handle single click events (only add marker)
-      map.on('click', function(event) {
+      map.on("click", function (event) {
         addMarkerAtCoordinates(event.coordinate, false);
       });
-      
+
       // Handle double click events (show marker and popup)
-      map.on('dblclick', function(event) {
+      map.on("dblclick", function (event) {
         addMarkerAtCoordinates(event.coordinate, true);
-        
+
         // Prevent the single click event from firing
         event.stopPropagation();
       });
-      
+
       // Implement search functionality
-      document.addEventListener('DOMContentLoaded', function() {
-        const searchInput = document.querySelector('.search-input');
-        const searchButton = document.querySelector('.search-button');
-        
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get both search inputs and buttons
+        const searchInputs = document.querySelectorAll(".search-input");
+        const searchButtons = document.querySelectorAll(".search-button");
+
         // Function to perform the search
-        function performSearch() {
+        function performSearch(searchInput, searchButton) {
           const searchText = searchInput.value.trim();
           if (!searchText) return;
-          
+
           // Show loading state
-          searchButton.classList.add('loading');
-          
+          searchButton.classList.add("loading");
+
           // Make a request to Nominatim API
-          fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchText)}`)
-            .then(response => response.json())
-            .then(data => {
+          fetch(
+            `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
+              searchText
+            )}`
+          )
+            .then((response) => response.json())
+            .then((data) => {
               // Remove loading state
-              searchButton.classList.remove('loading');
-              
+              searchButton.classList.remove("loading");
+
               if (data && data.length > 0) {
                 // Get the first result
                 const result = data[0];
                 const lon = parseFloat(result.lon);
                 const lat = parseFloat(result.lat);
-                
+
                 // Transform to map projection
-                const coordinates = ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857');
-                
+                const coordinates = ol.proj.transform(
+                  [lon, lat],
+                  "EPSG:4326",
+                  "EPSG:3857"
+                );
+
                 // Pan to the location
                 map.getView().animate({
                   center: coordinates,
                   zoom: 15,
-                  duration: 1000
+                  duration: 1000,
                 });
-                
+
                 // Add a marker at the found location
                 addMarkerAtCoordinates(coordinates, true);
               } else {
                 // No results found
-                alert('محل مورد نظر پیدا نشد');
+                alert("محل مورد نظر پیدا نشد");
               }
             })
-            .catch(error => {
+            .catch((error) => {
               // Remove loading state
-              searchButton.classList.remove('loading');
-              console.error('Error during search:', error);
-              alert('خطا در جستجو');
+              searchButton.classList.remove("loading");
+              console.error("Error during search:", error);
+              alert("خطا در جستجو");
             });
         }
-        
-        // Add event listener to search button
-        searchButton.addEventListener('click', performSearch);
-        
-        // Add event listener for Enter key in search input
-        searchInput.addEventListener('keypress', function(e) {
-          if (e.key === 'Enter') {
-            performSearch();
-          }
+
+        // Add event listeners to all search buttons and inputs
+        searchInputs.forEach((searchInput, index) => {
+          const searchButton = searchButtons[index];
+
+          // Add click event to button
+          searchButton.addEventListener("click", () => {
+            performSearch(searchInput, searchButton);
+          });
+
+          // Add enter key event to input
+          searchInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+              performSearch(searchInput, searchButton);
+            }
+          });
         });
       });
-      
       // Add CSS styles for search button loading state
-      const searchStyles = document.createElement('style');
+      const searchStyles = document.createElement("style");
       searchStyles.textContent = `
         .search-button {
           cursor: pointer;
@@ -889,427 +945,463 @@
       document.head.appendChild(searchStyles);
     </script>
     <script src="{% static 'kabul/app.js' %}"></script>
-   
-   <!-- اسکریپت پنل یادداشت -->
-   <script>
-     document.addEventListener('DOMContentLoaded', function() {
-       const stickyNote = document.getElementById('stickyNote');
-       const stickyNoteHeader = document.getElementById('stickyNoteHeader');
-       const noteContent = document.getElementById('noteContent');
-       const saveNoteBtn = document.getElementById('saveNote');
-       const cancelEditBtn = document.getElementById('cancelEdit');
-       const deleteNoteBtn = document.getElementById('deleteNote');
-       const minimizeNoteBtn = document.getElementById('minimizeNote');
-       const noteToggleButton = document.getElementById('noteToggleButton');
-       
-       // بارگذاری یادداشت ذخیره شده
-       if (localStorage.getItem('stickyNoteContent')) {
-         noteContent.value = localStorage.getItem('stickyNoteContent');
-       }
-       
-       // باز/بسته کردن پنل یادداشت با دکمه شناور
-       noteToggleButton.addEventListener('click', function() {
-         if (stickyNote.style.display === 'none' || stickyNote.style.display === '') {
-           stickyNote.style.display = 'block';
-         } else {
-           stickyNote.style.display = 'none';
-         }
-       });
-       
-       // ذخیره یادداشت
-       saveNoteBtn.addEventListener('click', function() {
-         localStorage.setItem('stickyNoteContent', noteContent.value);
-         alert('یادداشت با موفقیت ذخیره شد!');
-       });
-       
-       // لغو تغییرات
-       cancelEditBtn.addEventListener('click', function() {
-         if (localStorage.getItem('stickyNoteContent')) {
-           noteContent.value = localStorage.getItem('stickyNoteContent');
-         } else {
-           noteContent.value = '';
-         }
-       });
-       
-       // حذف یادداشت
-       deleteNoteBtn.addEventListener('click', function() {
-         if (confirm('آیا مطمئن هستید که می‌خواهید یادداشت را حذف کنید؟')) {
-           localStorage.removeItem('stickyNoteContent');
-           noteContent.value = '';
-         }
-       });
-       
-       // کوچک کردن/بزرگ کردن پنل یادداشت
-       minimizeNoteBtn.addEventListener('click', function() {
-         stickyNote.classList.toggle('minimized');
-         if (stickyNote.classList.contains('minimized')) {
-           minimizeNoteBtn.textContent = '□';
-           minimizeNoteBtn.title = 'بزرگ کردن';
-         } else {
-           minimizeNoteBtn.textContent = '_';
-           minimizeNoteBtn.title = 'کوچک کردن';
-         }
-       });
-       
-       // امکان جابجایی پنل یادداشت
-       let isDragging = false;
-       let offsetX, offsetY;
-       
-       stickyNoteHeader.addEventListener('mousedown', function(e) {
-         isDragging = true;
-         offsetX = e.clientX - stickyNote.getBoundingClientRect().left;
-         offsetY = e.clientY - stickyNote.getBoundingClientRect().top;
-       });
-       
-       document.addEventListener('mousemove', function(e) {
-         if (isDragging) {
-           stickyNote.style.left = (e.clientX - offsetX) + 'px';
-           stickyNote.style.top = (e.clientY - offsetY) + 'px';
-         }
-       });
-       
-       document.addEventListener('mouseup', function() {
-         isDragging = false;
-       });
-       
-       // تنظیم عملکرد دکمه identify
-       const identifyElement = document.querySelector('.identify');
-       const identifyIcon = document.querySelector('.identify__icon');
-       const mapElement = document.getElementById('map');
-       const toolsElement = document.querySelector('.tools');
-       const bodyElement = document.body;
-       const headerElement = document.querySelector('.header');
-       
-       // متغیر برای فعال/غیرفعال‌سازی حالت شناسایی
-       let identifyActive = false;
-       
-       // تابع برای باز کردن پنل
-       function openIdentifyPanel() {
-         identifyElement.classList.add('active');
-         bodyElement.classList.add('body-shifted');
-         identifyActive = true;
-       }
-       
-       // تابع برای بستن پنل
-       function closeIdentifyPanel() {
-         identifyElement.classList.remove('active');
-         bodyElement.classList.remove('body-shifted');
-         identifyActive = false;
-       }
-       
-       // باز و بسته کردن پنل با کلیک روی آیکون
-       identifyIcon.addEventListener('click', function() {
-         if (identifyElement.classList.contains('active')) {
-           closeIdentifyPanel();
-         } else {
-           openIdentifyPanel();
-         }
-       });
-       
-       // رویداد کلیک روی نقشه برای شناسایی عوارض
-       map.on('singleclick', function(evt) {
-         if (!identifyActive) return;
-         
-         // پاکسازی نتایج قبلی
-         const resultElement = document.querySelector('.identify__result');
-         if (resultElement) {
-           resultElement.innerHTML = '<div class="loading">در حال دریافت اطلاعات...</div>';
-         }
-         
-         // پیدا کردن تمام لایه‌های WMS فعال در نقشه
-         const wmsLayers = [];
-         map.getLayers().forEach(function(layer) {
-           if (layer.getVisible() && layer.get('type') === 'wms') {
-             wmsLayers.push(layer);
-           }
-         });
-         
-         // اگر لایه WMS وجود ندارد
-         if (wmsLayers.length === 0) {
-           if (resultElement) {
-             resultElement.innerHTML = '<div class="no-results">هیچ لایه WMS فعالی وجود ندارد</div>';
-           }
-           return;
-         }
-         
-         const viewResolution = map.getView().getResolution();
-         const projection = map.getView().getProjection();
-         
-         // انجام درخواست GetFeatureInfo برای هر لایه WMS
-         let pendingRequests = wmsLayers.length;
-         let hasResults = false;
-         
-         wmsLayers.forEach(function(wmsLayer) {
-           const source = wmsLayer.getSource();
-           // اطمینان از استفاده از پارامترهای صحیح برای درخواست GetFeatureInfo
-           const url = source.getFeatureInfoUrl(
-             evt.coordinate,
-             viewResolution,
-             projection,
-             {
-               'INFO_FORMAT': 'application/json',
-               'FEATURE_COUNT': 10,
-               'QUERY_LAYERS': wmsLayer.get('name'),
-               'STYLES': '',
-               'WIDTH': map.getSize()[0],
-               'HEIGHT': map.getSize()[1],
-               'X': Math.round(evt.pixel[0]),
-               'Y': Math.round(evt.pixel[1])
-             }
-           );
-           
-           console.log('WMS GetFeatureInfo URL:', url); // برای دیباگ
-           
-           if (url) {
-             fetch(url)
-               .then(function(response) {
-                 console.log('GetFeatureInfo response status:', response.status);
-                 return response.json().catch(function(error) {
-                   console.error('Error parsing JSON:', error);
-                   return { features: [] };
-                 });
-               })
-               .then(function(data) {
-                 console.log('GetFeatureInfo data:', data); // برای دیباگ
-                 pendingRequests--;
-                 
-                 if (data.features && data.features.length > 0) {
-                   hasResults = true;
-                   
-                   // نمایش ویژگی‌های عارضه در پنل شناسایی
-                   const layerName = wmsLayer.get('title') || 'لایه بدون نام';
-                   let featuresHtml = `<div class="identify__layer-title">${layerName}</div>`;
-                   
-                   data.features.forEach(function(feature) {
-                     featuresHtml += '<div class="identify__feature">';
-                     
-                     if (feature.properties) {
-                       featuresHtml += '<table class="identify__attributes">';
-                       featuresHtml += '<thead><tr><th>ویژگی</th><th>مقدار</th></tr></thead>';
-                       featuresHtml += '<tbody>';
-                       
-                       for (const prop in feature.properties) {
-                         if (Object.prototype.hasOwnProperty.call(feature.properties, prop)) {
-                           featuresHtml += `<tr><td>${prop}</td><td>${feature.properties[prop] || '-'}</td></tr>`;
-                         }
-                       }
-                       
-                       featuresHtml += '</tbody></table>';
-                     } else {
-                       featuresHtml += '<div class="no-attributes">بدون ویژگی</div>';
-                     }
-                     
-                     featuresHtml += '</div>';
-                   });
-                   
-                   if (resultElement) {
-                     resultElement.innerHTML = featuresHtml;
-                   }
-                 }
-                 
-                 // اگر همه درخواست‌ها تمام شده و نتیجه‌ای نداشته
-                 if (pendingRequests === 0 && !hasResults) {
-                   if (resultElement) {
-                     resultElement.innerHTML = '<div class="no-results">هیچ عارضه‌ای پیدا نشد</div>';
-                   }
-                 }
-               })
-               .catch(function(error) {
-                 console.error('خطا در دریافت اطلاعات:', error);
-                 pendingRequests--;
-                 
-                 if (pendingRequests === 0 && !hasResults) {
-                   if (resultElement) {
-                     resultElement.innerHTML = '<div class="error">خطا در دریافت اطلاعات</div>';
-                   }
-                 }
-               });
-           } else {
-             console.error('نمی‌توان URL درخواست GetFeatureInfo را ایجاد کرد');
-             pendingRequests--;
-           }
-         });
-       });
-       
-       // پیاده‌سازی لایه سوییچر
-       const layerSwitcherIcon = document.querySelector('.layer-switcher__icon');
-       const layerSwitcherContent = document.querySelector('.layer-switcher__content');
-       const layerSwitcher = document.querySelector('.layer-switcher');
-       
-       // باز و بسته کردن لایه سوییچر با کلیک روی آیکون
-       layerSwitcherIcon.addEventListener('click', function() {
-         layerSwitcher.classList.toggle('active');
-       });
-       
-       // بستن لایه سوییچر با کلیک در خارج از آن
-       document.addEventListener('click', function(event) {
-         if (!layerSwitcher.contains(event.target) && layerSwitcher.classList.contains('active')) {
-           layerSwitcher.classList.remove('active');
-         }
-       });
-       
-       // بروزرسانی لیست لایه‌ها
-       function updateLayerList() {
-         // پاکسازی محتوای فعلی
-         layerSwitcherContent.innerHTML = '<div class="layer-title">لایه‌های نقشه</div>';
-         
-         // اضافه کردن لایه‌های موجود به لیست
-         const layers = map.getLayers().getArray();
-         
-         // لایه پایه (OSM)
-         const baseLayer = layers.find(layer => layer.get('title') === 'OpenStreetMap' || 
-                                           layer.getSource() instanceof ol.source.OSM);
-         if (baseLayer) {
-           const baseItem = document.createElement('div');
-           baseItem.className = 'layer-item';
-           
-           const baseCheckbox = document.createElement('input');
-           baseCheckbox.type = 'checkbox';
-           baseCheckbox.id = 'base-layer-checkbox';
-           baseCheckbox.checked = baseLayer.getVisible();
-           
-           baseCheckbox.addEventListener('change', function() {
-             baseLayer.setVisible(this.checked);
-           });
-           
-           const baseLabel = document.createElement('label');
-           baseLabel.htmlFor = 'base-layer-checkbox';
-           baseLabel.textContent = 'نقشه پایه OpenStreetMap';
-           
-           baseItem.appendChild(baseCheckbox);
-           baseItem.appendChild(baseLabel);
-           layerSwitcherContent.appendChild(baseItem);
-         }
-         
-         // لایه‌های WMS
-         const wmsLayers = layers.filter(layer => layer.get('type') === 'wms');
-         
-         if (wmsLayers.length > 0) {
-           const wmsTitle = document.createElement('div');
-           wmsTitle.className = 'layer-title';
-           wmsTitle.textContent = 'لایه‌های WMS';
-           layerSwitcherContent.appendChild(wmsTitle);
-           
-           wmsLayers.forEach(function(layer, index) {
-             const layerItem = document.createElement('div');
-             layerItem.className = 'layer-item';
-             
-             const checkbox = document.createElement('input');
-             checkbox.type = 'checkbox';
-             checkbox.id = 'wms-layer-' + index;
-             checkbox.checked = layer.getVisible();
-             
-             checkbox.addEventListener('change', function() {
-               layer.setVisible(this.checked);
-             });
-             
-             const label = document.createElement('label');
-             label.htmlFor = 'wms-layer-' + index;
-             label.textContent = layer.get('title') || 'لایه WMS ' + (index + 1);
-             
-             layerItem.appendChild(checkbox);
-             layerItem.appendChild(label);
-             layerSwitcherContent.appendChild(layerItem);
-           });
-         } else {
-           const noWmsLayers = document.createElement('div');
-           noWmsLayers.textContent = 'هیچ لایه WMS فعالی وجود ندارد';
-           layerSwitcherContent.appendChild(noWmsLayers);
-         }
-       }
-       
-       // بروزرسانی اولیه لیست لایه‌ها
-       updateLayerList();
-       
-       // بروزرسانی لیست لایه‌ها هنگام اضافه یا حذف لایه
-       map.getLayers().on('add', updateLayerList);
-       map.getLayers().on('remove', updateLayerList);
-       
-       // مدیریت مودال آپلود عکس
-       const photoModal = document.getElementById('photoModal');
-       const addPhotoBtn = document.getElementById('addPhotoBtn');
-       const closeModalBtn = document.getElementById('closeModalBtn');
-       const photoUploadForm = document.getElementById('photoUploadForm');
-       const photoFile = document.getElementById('photoFile');
-       const photoPreview = document.getElementById('photoPreview');
-       const photoContainer = document.getElementById('photoContainer');
-       
-       // نمایش مودال با کلیک روی دکمه افزودن عکس
-       addPhotoBtn.addEventListener('click', function() {
-         photoModal.classList.add('active');
-       });
-       
-       // بستن مودال
-       closeModalBtn.addEventListener('click', function() {
-         photoModal.classList.remove('active');
-       });
-       
-       // بستن مودال با کلیک بیرون از آن
-       photoModal.addEventListener('click', function(e) {
-         if (e.target === photoModal) {
-           photoModal.classList.remove('active');
-         }
-       });
-       
-       // نمایش پیش‌نمایش عکس انتخاب شده
-       photoFile.addEventListener('change', function() {
-         if (this.files && this.files[0]) {
-           const reader = new FileReader();
-           
-           reader.onload = function(e) {
-             photoPreview.src = e.target.result;
-             photoPreview.style.display = 'block';
-           };
-           
-           reader.readAsDataURL(this.files[0]);
-         }
-       });
-       
-       // ارسال فرم آپلود عکس
-       photoUploadForm.addEventListener('submit', function(e) {
-         e.preventDefault();
-         
-         // در اینجا می‌توان از AJAX برای ارسال عکس به سرور استفاده کرد
-         // اما برای نمونه، ما فقط عکس را در صفحه نمایش می‌دهیم
-         
-         if (photoFile.files && photoFile.files[0]) {
-           const reader = new FileReader();
-           const description = document.getElementById('photoDescription').value;
-           
-           reader.onload = function(e) {
-             // حذف پیام "هیچ عکسی وجود ندارد" اگر وجود داشته باشد
-             const noPhotoMsg = photoContainer.querySelector('.identify__no-photo');
-             if (noPhotoMsg) {
-               noPhotoMsg.remove();
-             }
-             
-             // ایجاد عناصر برای نمایش عکس و اطلاعات آن
-             const photoWrapper = document.createElement('div');
-             photoWrapper.style.marginBottom = '20px';
-             
-             const img = document.createElement('img');
-             img.src = e.target.result;
-             img.className = 'identify__photo';
-             
-             const info = document.createElement('div');
-             info.className = 'identify__photo-info';
-             info.textContent = description || 'بدون توضیحات';
-             
-             // افزودن به صفحه
-             photoWrapper.appendChild(img);
-             photoWrapper.appendChild(info);
-             photoContainer.appendChild(photoWrapper);
-             
-             // بستن مودال و پاک کردن فرم
-             photoModal.classList.remove('active');
-             photoUploadForm.reset();
-             photoPreview.style.display = 'none';
-           };
-           
-           reader.readAsDataURL(photoFile.files[0]);
-         }
-       });
-     });
-   </script>
-</body>
+
+    <!-- اسکریپت پنل یادداشت -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const stickyNote = document.getElementById("stickyNote");
+        const stickyNoteHeader = document.getElementById("stickyNoteHeader");
+        const noteContent = document.getElementById("noteContent");
+        const saveNoteBtn = document.getElementById("saveNote");
+        const cancelEditBtn = document.getElementById("cancelEdit");
+        const deleteNoteBtn = document.getElementById("deleteNote");
+        const minimizeNoteBtn = document.getElementById("minimizeNote");
+        const noteToggleButton = document.getElementById("noteToggleButton");
+
+        // بارگذاری یادداشت ذخیره شده
+        if (localStorage.getItem("stickyNoteContent")) {
+          noteContent.value = localStorage.getItem("stickyNoteContent");
+        }
+
+        // باز/بسته کردن پنل یادداشت با دکمه شناور
+        noteToggleButton.addEventListener("click", function () {
+          if (
+            stickyNote.style.display === "none" ||
+            stickyNote.style.display === ""
+          ) {
+            stickyNote.style.display = "block";
+          } else {
+            stickyNote.style.display = "none";
+          }
+        });
+
+        // ذخیره یادداشت
+        saveNoteBtn.addEventListener("click", function () {
+          localStorage.setItem("stickyNoteContent", noteContent.value);
+          alert("یادداشت با موفقیت ذخیره شد!");
+        });
+
+        // لغو تغییرات
+        cancelEditBtn.addEventListener("click", function () {
+          if (localStorage.getItem("stickyNoteContent")) {
+            noteContent.value = localStorage.getItem("stickyNoteContent");
+          } else {
+            noteContent.value = "";
+          }
+        });
+
+        // حذف یادداشت
+        deleteNoteBtn.addEventListener("click", function () {
+          if (confirm("آیا مطمئن هستید که می‌خواهید یادداشت را حذف کنید؟")) {
+            localStorage.removeItem("stickyNoteContent");
+            noteContent.value = "";
+          }
+        });
+
+        // کوچک کردن/بزرگ کردن پنل یادداشت
+        minimizeNoteBtn.addEventListener("click", function () {
+          stickyNote.classList.toggle("minimized");
+          if (stickyNote.classList.contains("minimized")) {
+            minimizeNoteBtn.textContent = "□";
+            minimizeNoteBtn.title = "بزرگ کردن";
+          } else {
+            minimizeNoteBtn.textContent = "_";
+            minimizeNoteBtn.title = "کوچک کردن";
+          }
+        });
+
+        // امکان جابجایی پنل یادداشت
+        let isDragging = false;
+        let offsetX, offsetY;
+
+        stickyNoteHeader.addEventListener("mousedown", function (e) {
+          isDragging = true;
+          offsetX = e.clientX - stickyNote.getBoundingClientRect().left;
+          offsetY = e.clientY - stickyNote.getBoundingClientRect().top;
+        });
+
+        document.addEventListener("mousemove", function (e) {
+          if (isDragging) {
+            stickyNote.style.left = e.clientX - offsetX + "px";
+            stickyNote.style.top = e.clientY - offsetY + "px";
+          }
+        });
+
+        document.addEventListener("mouseup", function () {
+          isDragging = false;
+        });
+
+        // تنظیم عملکرد دکمه identify
+        const identifyElement = document.querySelector(".identify");
+        const identifyIcon = document.querySelector(".identify__icon");
+        const mapElement = document.getElementById("map");
+        const toolsElement = document.querySelector(".tools");
+        // const layerSwitcherElement = document.querySelector(".layer-switcher");
+        const bodyElement = document.body;
+        const headerElement = document.querySelector(".header");
+
+        // متغیر برای فعال/غیرفعال‌سازی حالت شناسایی
+        let identifyActive = false;
+
+        // تابع برای باز کردن پنل
+        function openIdentifyPanel() {
+          identifyElement.classList.add("active");
+          bodyElement.classList.add("body-shifted");
+          identifyActive = true;
+        }
+
+        // تابع برای بستن پنل
+        function closeIdentifyPanel() {
+          identifyElement.classList.remove("active");
+          bodyElement.classList.remove("body-shifted");
+          identifyActive = false;
+        }
+
+        // باز و بسته کردن پنل با کلیک روی آیکون
+        identifyIcon.addEventListener("click", function () {
+          if (identifyElement.classList.contains("active")) {
+            closeIdentifyPanel();
+          } else {
+            openIdentifyPanel();
+          }
+        });
+
+        // رویداد کلیک روی نقشه برای شناسایی عوارض
+        map.on("singleclick", function (evt) {
+          if (!identifyActive) return;
+
+          // پاکسازی نتایج قبلی
+          const resultElement = document.querySelector(".identify__result");
+          if (resultElement) {
+            resultElement.innerHTML =
+              '<div class="loading">در حال دریافت اطلاعات...</div>';
+          }
+
+          // پیدا کردن تمام لایه‌های WMS فعال در نقشه
+          const wmsLayers = [];
+          map.getLayers().forEach(function (layer) {
+            if (layer.getVisible() && layer.get("type") === "wms") {
+              wmsLayers.push(layer);
+            }
+          });
+
+          // اگر لایه WMS وجود ندارد
+          if (wmsLayers.length === 0) {
+            if (resultElement) {
+              resultElement.innerHTML =
+                '<div class="no-results">هیچ لایه WMS فعالی وجود ندارد</div>';
+            }
+            return;
+          }
+
+          const viewResolution = map.getView().getResolution();
+          const projection = map.getView().getProjection();
+
+          // انجام درخواست GetFeatureInfo برای هر لایه WMS
+          let pendingRequests = wmsLayers.length;
+          let hasResults = false;
+
+          wmsLayers.forEach(function (wmsLayer) {
+            const source = wmsLayer.getSource();
+            // اطمینان از استفاده از پارامترهای صحیح برای درخواست GetFeatureInfo
+            const url = source.getFeatureInfoUrl(
+              evt.coordinate,
+              viewResolution,
+              projection,
+              {
+                INFO_FORMAT: "application/json",
+                FEATURE_COUNT: 10,
+                QUERY_LAYERS: wmsLayer.get("name"),
+                STYLES: "",
+                WIDTH: map.getSize()[0],
+                HEIGHT: map.getSize()[1],
+                X: Math.round(evt.pixel[0]),
+                Y: Math.round(evt.pixel[1]),
+              }
+            );
+
+            console.log("WMS GetFeatureInfo URL:", url); // برای دیباگ
+
+            if (url) {
+              fetch(url)
+                .then(function (response) {
+                  console.log(
+                    "GetFeatureInfo response status:",
+                    response.status
+                  );
+                  return response.json().catch(function (error) {
+                    console.error("Error parsing JSON:", error);
+                    return { features: [] };
+                  });
+                })
+                .then(function (data) {
+                  console.log("GetFeatureInfo data:", data); // برای دیباگ
+                  pendingRequests--;
+
+                  if (data.features && data.features.length > 0) {
+                    hasResults = true;
+
+                    // نمایش ویژگی‌های عارضه در پنل شناسایی
+                    const layerName = wmsLayer.get("title") || "لایه بدون نام";
+                    let featuresHtml = `<div class="identify__layer-title">${layerName}</div>`;
+
+                    data.features.forEach(function (feature) {
+                      featuresHtml += '<div class="identify__feature">';
+
+                      if (feature.properties) {
+                        featuresHtml += '<table class="identify__attributes">';
+                        featuresHtml +=
+                          "<thead><tr><th>ویژگی</th><th>مقدار</th></tr></thead>";
+                        featuresHtml += "<tbody>";
+
+                        for (const prop in feature.properties) {
+                          if (
+                            Object.prototype.hasOwnProperty.call(
+                              feature.properties,
+                              prop
+                            )
+                          ) {
+                            featuresHtml += `<tr><td>${prop}</td><td>${
+                              feature.properties[prop] || "-"
+                            }</td></tr>`;
+                          }
+                        }
+
+                        featuresHtml += "</tbody></table>";
+                      } else {
+                        featuresHtml +=
+                          '<div class="no-attributes">بدون ویژگی</div>';
+                      }
+
+                      featuresHtml += "</div>";
+                    });
+
+                    if (resultElement) {
+                      resultElement.innerHTML = featuresHtml;
+                    }
+                  }
+
+                  // اگر همه درخواست‌ها تمام شده و نتیجه‌ای نداشته
+                  if (pendingRequests === 0 && !hasResults) {
+                    if (resultElement) {
+                      resultElement.innerHTML =
+                        '<div class="no-results">هیچ عارضه‌ای پیدا نشد</div>';
+                    }
+                  }
+                })
+                .catch(function (error) {
+                  console.error("خطا در دریافت اطلاعات:", error);
+                  pendingRequests--;
+
+                  if (pendingRequests === 0 && !hasResults) {
+                    if (resultElement) {
+                      resultElement.innerHTML =
+                        '<div class="error">خطا در دریافت اطلاعات</div>';
+                    }
+                  }
+                });
+            } else {
+              console.error("نمی‌توان URL درخواست GetFeatureInfo را ایجاد کرد");
+              pendingRequests--;
+            }
+          });
+        });
+
+        // پیاده‌سازی لایه سوییچر
+        const layerSwitcherIcon = document.querySelector(
+          ".layer-switcher__icon"
+        );
+        const layerSwitcherContent = document.querySelector(
+          ".layer-switcher__content"
+        );
+        const layerSwitcher = document.querySelector(".layer-switcher");
+
+        // باز و بسته کردن لایه سوییچر با کلیک روی آیکون
+        layerSwitcherIcon.addEventListener("click", function () {
+          layerSwitcher.classList.toggle("active");
+        });
+
+        // بستن لایه سوییچر با کلیک در خارج از آن
+        document.addEventListener("click", function (event) {
+          if (
+            !layerSwitcher.contains(event.target) &&
+            layerSwitcher.classList.contains("active")
+          ) {
+            layerSwitcher.classList.remove("active");
+          }
+        });
+
+        // بروزرسانی لیست لایه‌ها
+        function updateLayerList() {
+          // پاکسازی محتوای فعلی
+          layerSwitcherContent.innerHTML =
+            '<div class="layer-title">لایه‌های نقشه</div>';
+
+          // اضافه کردن لایه‌های موجود به لیست
+          const layers = map.getLayers().getArray();
+
+          // لایه پایه (OSM)
+          const baseLayer = layers.find(
+            (layer) =>
+              layer.get("title") === "OpenStreetMap" ||
+              layer.getSource() instanceof ol.source.OSM
+          );
+          if (baseLayer) {
+            const baseItem = document.createElement("div");
+            baseItem.className = "layer-item";
+
+            const baseCheckbox = document.createElement("input");
+            baseCheckbox.type = "checkbox";
+            baseCheckbox.id = "base-layer-checkbox";
+            baseCheckbox.checked = baseLayer.getVisible();
+
+            baseCheckbox.addEventListener("change", function () {
+              baseLayer.setVisible(this.checked);
+            });
+
+            const baseLabel = document.createElement("label");
+            baseLabel.htmlFor = "base-layer-checkbox";
+            baseLabel.textContent = "OpenStreetMap";
+
+            baseItem.appendChild(baseCheckbox);
+            baseItem.appendChild(baseLabel);
+            layerSwitcherContent.appendChild(baseItem);
+          }
+
+          // لایه‌های WMS
+          const wmsLayers = layers.filter(
+            (layer) => layer.get("type") === "wms"
+          );
+
+          if (wmsLayers.length > 0) {
+            const wmsTitle = document.createElement("div");
+            wmsTitle.className = "layer-title";
+            layerSwitcherContent.appendChild(wmsTitle);
+
+            wmsLayers.forEach(function (layer, index) {
+              const layerItem = document.createElement("div");
+              layerItem.className = "layer-item";
+
+              const checkbox = document.createElement("input");
+              checkbox.type = "checkbox";
+              checkbox.id = "wms-layer-" + index;
+              checkbox.checked = layer.getVisible();
+
+              checkbox.addEventListener("change", function () {
+                layer.setVisible(this.checked);
+              });
+
+              const label = document.createElement("label");
+              label.htmlFor = "wms-layer-" + index;
+              label.textContent =
+                layer.get("title") || "لایه WMS " + (index + 1);
+
+              layerItem.appendChild(checkbox);
+              layerItem.appendChild(label);
+              layerSwitcherContent.appendChild(layerItem);
+            });
+          } else {
+            const noWmsLayers = document.createElement("div");
+            noWmsLayers.textContent = "هیچ لایه WMS فعالی وجود ندارد";
+            layerSwitcherContent.appendChild(noWmsLayers);
+          }
+        }
+
+        // بروزرسانی اولیه لیست لایه‌ها
+        updateLayerList();
+
+        // بروزرسانی لیست لایه‌ها هنگام اضافه یا حذف لایه
+        map.getLayers().on("add", updateLayerList);
+        map.getLayers().on("remove", updateLayerList);
+
+        // مدیریت مودال آپلود عکس
+        const photoModal = document.getElementById("photoModal");
+        const addPhotoBtn = document.getElementById("addPhotoBtn");
+        const closeModalBtn = document.getElementById("closeModalBtn");
+        const photoUploadForm = document.getElementById("photoUploadForm");
+        const photoFile = document.getElementById("photoFile");
+        const photoPreview = document.getElementById("photoPreview");
+        const photoContainer = document.getElementById("photoContainer");
+
+        // نمایش مودال با کلیک روی دکمه افزودن عکس
+        addPhotoBtn.addEventListener("click", function () {
+          photoModal.classList.add("active");
+        });
+
+        // بستن مودال
+        closeModalBtn.addEventListener("click", function () {
+          photoModal.classList.remove("active");
+        });
+
+        // بستن مودال با کلیک بیرون از آن
+        photoModal.addEventListener("click", function (e) {
+          if (e.target === photoModal) {
+            photoModal.classList.remove("active");
+          }
+        });
+
+        // نمایش پیش‌نمایش عکس انتخاب شده
+        photoFile.addEventListener("change", function () {
+          if (this.files && this.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+              photoPreview.src = e.target.result;
+              photoPreview.style.display = "block";
+            };
+
+            reader.readAsDataURL(this.files[0]);
+          }
+        });
+
+        // ارسال فرم آپلود عکس
+        photoUploadForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // در اینجا می‌توان از AJAX برای ارسال عکس به سرور استفاده کرد
+          // اما برای نمونه، ما فقط عکس را در صفحه نمایش می‌دهیم
+
+          if (photoFile.files && photoFile.files[0]) {
+            const reader = new FileReader();
+            const description =
+              document.getElementById("photoDescription").value;
+
+            reader.onload = function (e) {
+              // حذف پیام "هیچ عکسی وجود ندارد" اگر وجود داشته باشد
+              const noPhotoMsg = photoContainer.querySelector(
+                ".identify__no-photo"
+              );
+              if (noPhotoMsg) {
+                noPhotoMsg.remove();
+              }
+
+              // ایجاد عناصر برای نمایش عکس و اطلاعات آن
+              const photoWrapper = document.createElement("div");
+              photoWrapper.style.marginBottom = "20px";
+
+              const img = document.createElement("img");
+              img.src = e.target.result;
+              img.className = "identify__photo";
+
+              const info = document.createElement("div");
+              info.className = "identify__photo-info";
+              info.textContent = description || "بدون توضیحات";
+
+              // افزودن به صفحه
+              photoWrapper.appendChild(img);
+              photoWrapper.appendChild(info);
+              photoContainer.appendChild(photoWrapper);
+
+              // بستن مودال و پاک کردن فرم
+              photoModal.classList.remove("active");
+              photoUploadForm.reset();
+              photoPreview.style.display = "none";
+            };
+
+            reader.readAsDataURL(photoFile.files[0]);
+          }
+        });
+      });
+    </script>
+  </body>
 </html>

@@ -59,16 +59,10 @@
       .identify,
       .measurement-control,
       .search-box,
-      .user-button {
-        margin: 5px;
-        padding: 5px;
-        transition: right 0.3s ease, margin-right 0.3s ease;
-      }
+     
       
       body.body-shifted .layer-switcher,
-      body.body-shifted .user-button {
-        margin-right: 30%;
-      }
+    
 
       .search-input {
         padding: 5px;
@@ -465,7 +459,7 @@
     <div class="tools">
       
       <div class="drawing-control">
-          <div class="user-button"></div>
+          
           <div class="drawing-control__icon drawing-control__icon--toggler"></div>
           <div class="drawing-control__icon drawing-control__icon--point"></div>
           <div class="drawing-control__icon drawing-control__icon--line"></div>
