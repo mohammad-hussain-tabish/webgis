@@ -18,48 +18,44 @@ const map = new ol.Map({
 console.log("نسخه OpenLayers:", ol.VERSION);
 
 // تابع برای اضافه کردن لایه WMS از جئوسرور
+const geoserverUrl = '/geoserver/';  // Update to use Django proxy
+
+// Fix the WMS layer function syntax
 function addWMSLayer(url, layerName, title, visible = true) {
-  const wmsSource = new ol.source.TileWMS({
-    url: url,
-    params: {
-      LAYERS: layerName,
-      TILED: true,
-      FORMAT: "image/png",
-      TRANSPARENT: true,
-      VERSION: "1.3.0",
-    },
-    serverType: "geoserver",
-    crossOrigin: "anonymous",
-  });
+    const wmsSource = new ol.source.TileWMS({
+        url: geoserverUrl,
+        params: {
+            'LAYERS': layerName,
+            'TILED': true,
+            'FORMAT': 'image/png',
+            'TRANSPARENT': true,
+            'VERSION': '1.3.0',
+        },
+        serverType: 'geoserver',
+        crossOrigin: 'anonymous'  // Move this inside the source options
+    });
 
-  const wmsLayer = new ol.layer.Tile({
-    source: wmsSource,
-    visible: visible,
-  });
+    const wmsLayer = new ol.layer.Tile({
+        source: wmsSource,
+        visible: visible,
+        title: title,  // Add title to layer properties
+        type: 'wms',   // Add type to layer properties
+        name: layerName // Add name to layer properties
+    });
 
-  // اضافه کردن ویژگی‌های مورد نیاز برای شناسایی
-  wmsLayer.set("type", "wms");
-  wmsLayer.set("title", title);
-  wmsLayer.set("name", layerName);
-
-  map.addLayer(wmsLayer);
-  console.log(`Layer ${title} (${layerName}) added to map`);
-  return wmsLayer;
+    map.addLayer(wmsLayer);
+    console.log(`Layer ${title} (${layerName}) added to map`);
+    return wmsLayer;
 }
 
-// اضافه کردن لایه‌های WMS پس از اینکه نقشه آماده شد
+// Fix the event listener
 document.addEventListener("DOMContentLoaded", function () {
-  // آدرس GeoServer - تنظیم آدرس مناسب برای محیط شما
-  const geoserverUrl = "/geoserver_proxy/"; // اگر از پروکسی استفاده می‌کنید
-  // یا آدرس مستقیم
-  // const geoserverUrl = 'http://localhost:8080/geoserver/wms';
+    console.log("Adding WMS layers from:", geoserverUrl);  // Use geoserverUrl instead of GEOSERVER_URL
 
-  console.log("Adding WMS layers from:", geoserverUrl);
-
-  // اضافه کردن لایه‌های موجود در جئوسرور
-  addWMSLayer(geoserverUrl, "cite:Hospital", "شفاخانه");
-  addWMSLayer(geoserverUrl, "cite:Kabul_22District", "۲۲ ناحیه کابل");
-  addWMSLayer(geoserverUrl, "cite:Kabul_Area_name", "مناطق کابل");
+    // Add WMS layers using the proxy URL
+    addWMSLayer(geoserverUrl, "cite:Hospital", "شفاخانه");
+    addWMSLayer(geoserverUrl, "cite:Kabul_22District", "۲۲ ناحیه کابل");
+    addWMSLayer(geoserverUrl, "cite:Kabul_Area_name", "مناطق کابل");
 });
 
 // Create a vector source for the markers

@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ورود - نقشه گردشگری کابل</title>
+    <style>
+      body {
+        font-family: "Tahoma", sans-serif;
+        background-color: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        direction: rtl;
+      }
+      .login-container {
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+      .form-group {
+        margin-bottom: 1rem;
+      }
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+      input {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+      }
+      button {
+        background: #4caf50;
+        color: white;
+        padding: 0.75rem 1rem;
+        border: none;
+        border-radius: 4px;
+        width: 100%;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #45a049;
+      }
+      .signup-link {
+        text-align: center;
+        margin-top: 1rem;
+      }
+      .signup-link a {
+        color: #4caf50;
+        text-decoration: none;
+      }
+      .messages {
+        margin-bottom: 1rem;
+      }
+
+      .message {
+        padding: 10px;
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
+
+      .message.error {
+        background-color: #ffebee;
+        color: #c62828;
+        border: 1px solid #ffcdd2;
+      }
+
+      .message.success {
+        background-color: #e8f5e9;
+        color: #2e7d32;
+        border: 1px solid #c8e6c9;
+      }
+    </style>
+    <!-- Add this in the <head> section -->
+    <style>
+      .error-message {
+        color: #f44336;
+        font-size: 0.8rem;
+        margin-top: -0.5rem;
+        margin-bottom: 0.5rem;
+        display: none;
+      }
+      input.invalid {
+        border-color: #f44336;
+      }
+    </style>
+
+    <!-- Add this before closing </body> tag -->
+    <script src="{% static 'kabul/js/validation.js' %}"></script>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>ورود به سیستم</h2>
+      <form method="post" action="{% url 'signin' %}">
+        {% csrf_token %}
+        <!-- Add this after the form opening tag -->
+        {% if messages %}
+        <div class="messages">
+          {% for message in messages %}
+          <div
+            class="message {% if message.tags %}{{ message.tags }}{% endif %}"
+          >
+            {{ message }}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+        <div class="form-group">
+          <label for="username">نام کاربری:</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+        <div class="form-group">
+          <label for="password">رمز عبور:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <button type="submit">ورود</button>
+      </form>
+      <div class="signup-link">
+        <p>حساب کاربری ندارید؟ <a href="{% url 'signup' %}">ثبت نام کنید</a></p>
+      </div>
+    </div>
+  </body>
+</html>
