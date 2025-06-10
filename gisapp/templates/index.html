@@ -73,6 +73,13 @@
         <div class="search-button"></div>
         <input class="search-input" placeholder="جستجو" type="text" />
       </div>
+      <!-- اضافه کردن پنل مسیریابی -->
+      <div class="navigation-panel">
+        <button id="locateMe" class="control-button">📍 نمایش موقعیت من</button>
+        <button id="startRouting" class="control-button">🚗 شروع مسیریابی</button>
+        <button id="clearRoute" class="control-button">🗑️ پاک کردن مسیر</button>
+        <div id="routeInfo"></div>
+      </div>
     </div>
 
     <!-- Tools -->
@@ -180,5 +187,6 @@
     <script src="{% static 'kabul/js/identify.js' %}"></script>
     <script src="{% static 'kabul/js/layerSwitcher.js' %}"></script>
     <script src="{% static 'kabul/js/photoUpload.js' %}"></script>
+    <script src="{% static 'kabul/js/MASER.js' %}"></script>
   </body>
 </html>
