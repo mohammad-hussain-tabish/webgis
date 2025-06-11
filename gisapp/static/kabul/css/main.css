@@ -527,3 +527,129 @@ body.body-shifted #map {
 .logout-btn:hover {
   background-color: #d32f2f;
 }
+
+
+/* جعبه مسیریابی زیبا و ثابت در گوشه نقشه */
+.navigation-panel {
+    position: absolute;
+    top: 200px;
+    /* left: 20px; */
+    right: 0;
+    z-index: 1001;
+    background: rgba(255,255,255,0.95);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    padding: 15px 12px 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 180px;
+    max-width: 250px;
+}
+
+.navigation-panel__drag-handle {
+  cursor: move;
+  background: #f3f3f3;
+  border-radius: 6px;
+  padding: 4px 0;
+  text-align: center;
+  font-size: 18px;
+  color: #888;
+  margin-bottom: 8px;
+  user-select: none;
+}
+
+.navigation-panel .control-button {
+    background: #2e6be6;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 0;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.navigation-panel .control-button:hover {
+    background: #1746a2;
+}
+
+#routeInfo {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #333;
+    min-height: 20px;
+}
+
+.city-info-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #fff;
+  margin: 60px auto;
+  padding: 24px 32px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  direction: rtl;
+}
+
+.close {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+.city-details {
+  margin-bottom: 16px;
+}
+
+.city-img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 8px;
+  margin: 8px 0 16px 0;
+  display: block;
+}
+
+.upload-btn {
+  background: #2e6be6;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.upload-btn:hover {
+  background: #1746a2;
+}
+
+#cityImagePreview img {
+  margin-top: 10px;
+  max-width: 100%;
+  border-radius: 8px;
+}
+

@@ -14,6 +14,8 @@
       href="https://cdn.jsdelivr.net/npm/ol@latest/ol.css"
     />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'kabul/style.css' %}" />
     <link rel="stylesheet" href="{% static 'kabul/css/main.css' %}" />
@@ -73,40 +75,75 @@
         <div class="search-button"></div>
         <input class="search-input" placeholder="جستجو" type="text" />
       </div>
-      <!-- اضافه کردن پنل مسیریابی -->
-      <div class="navigation-panel">
-        <button id="locateMe" class="control-button">📍 نمایش موقعیت من</button>
-        <button id="startRouting" class="control-button">🚗 شروع مسیریابی</button>
-        <button id="clearRoute" class="control-button">🗑️ پاک کردن مسیر</button>
-        <div id="routeInfo"></div>
-      </div>
+    </div>
+  </div>
+  <!-- اضافه کردن پنل مسیریابی -->
+   <div class="navigation-panel" id="navigationPanel">
+   <div class="navigation-panel__drag-handle" id="navigationPanelHandle">⋮⋮</div>
+   <button id="locateMe" class="control-button">📍 نمایش موقعیت من</button>
+   <button id="startRouting" class="control-button">🚗 شروع مسیریابی</button>
+   <button id="clearRoute" class="control-button">🗑️ پاک کردن مسیر</button>
+   <div id="routeInfo"></div>
+ </div>
+
+  <!-- Tools -->
+  <div class="tools">
+    <div>
+      <button id="cityInfoBtn" class="city-info-btn" title="شهرهای مشهور افغانستان">
+       <i class="fas fa-city" style="font-size:28px;color:#2e6be6;padding-right:10px;"></i>
+      </button>
     </div>
 
-    <!-- Tools -->
-    <div class="tools">
-      <div class="drawing-control">
-        <div class="drawing-control__icon drawing-control__icon--toggler"></div>
-        <div class="drawing-control__icon drawing-control__icon--point"></div>
-        <div class="drawing-control__icon drawing-control__icon--line"></div>
-        <div class="drawing-control__icon drawing-control__icon--polygon"></div>
-        <div class="drawing-control__icon drawing-control__icon--finish"></div>
-        <div class="drawing-control__icon drawing-control__icon--clear"></div>
-      </div>
+  <!-- City Info Modal -->
+<div class="modal" id="cityInfoModal">
+  <div class="modal-content">
+    <span class="close" id="closeCityInfoModal">&times;</span>
+    <h2>شهرهای مشهور افغانستان</h2>
+    <div class="city-details">
+      <h3>کابل</h3>
+      <p>کابل پایتخت افغانستان و بزرگترین شهر این کشور است. این شهر مرکز فرهنگی، اقتصادی و سیاسی افغانستان می‌باشد.</p>
+      <img src="{% static 'kabul/images/kabul.jpg' %}" alt="Kabul" class="city-img">
+      <hr>
+      <h3>هرات</h3>
+      <p>هرات یکی از شهرهای تاریخی و فرهنگی افغانستان است که به خاطر معماری و آثار باستانی‌اش مشهور است.</p>
+      <img src="{% static 'kabul/images/herat.jpg' %}" alt="Herat" class="city-img">
+      <hr>
+      <h3>مزار شریف</h3>
+      <p>مزار شریف به خاطر روضه مبارک و جشن نوروز شهرت دارد و یکی از شهرهای مهم شمال افغانستان است.</p>
+      <img src="{% static 'kabul/images/mazar.jpg' %}" alt="Mazar" class="city-img">
+      <!-- ... add more cities as needed ... -->
+    </div>
+    <div style="margin-top:20px;">
+      <button id="cityImageUploadBtn" class="upload-btn">آپلود عکس شهر</button>
+      <input type="file" id="cityImageInput" style="display:none;" accept="image/*">
+      <div id="cityImagePreview"></div>
+    </div>
+  </div>
+</div>
 
-      <div class="measurement-control">
-        <div
-          class="measurement-control__icon measurement-control__icon--toggler"
-        ></div>
-        <div
-          class="measurement-control__icon measurement-control__icon--distance"
-        ></div>
-        <div
-          class="measurement-control__icon measurement-control__icon--area"
-        ></div>
-      </div>
-
-      <div class="identify">
-        <div class="identify__icon"></div>
+    <div class="drawing-control">
+      <div class="drawing-control__icon drawing-control__icon--toggler"></div>
+      <div class="drawing-control__icon drawing-control__icon--point"></div>
+      <div class="drawing-control__icon drawing-control__icon--line"></div>
+      <div class="drawing-control__icon drawing-control__icon--polygon"></div>
+      <div class="drawing-control__icon drawing-control__icon--finish"></div>
+      <div class="drawing-control__icon drawing-control__icon--clear"></div>
+    </div>
+    
+    <div class="measurement-control">
+      <div
+      class="measurement-control__icon measurement-control__icon--toggler"
+      ></div>
+      <div
+      class="measurement-control__icon measurement-control__icon--distance"
+      ></div>
+      <div
+      class="measurement-control__icon measurement-control__icon--area"
+      ></div>
+    </div>
+    
+    <div class="identify">
+      <div class="identify__icon"></div>
         <div class="identify__content">
           <div class="identify__header">
             <div class="identify__title">اطلاعات عارضه</div>
@@ -178,6 +215,68 @@
       </div>
     </div>
 
+    <script>
+document.getElementById('cityInfoBtn').onclick = function() {
+  document.getElementById('cityInfoModal').style.display = 'flex';
+};
+document.getElementById('closeCityInfoModal').onclick = function() {
+  document.getElementById('cityInfoModal').style.display = 'none';
+};
+window.onclick = function(event) {
+  const modal = document.getElementById('cityInfoModal');
+  if (event.target === modal) modal.style.display = 'none';
+};
+
+// Image upload preview
+document.getElementById('cityImageUploadBtn').onclick = function() {
+  document.getElementById('cityImageInput').click();
+};
+document.getElementById('cityImageInput').onchange = function(e) {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+      document.getElementById('cityImagePreview').innerHTML =
+        '<img src="' + evt.target.result + '" alt="City Image">';
+    };
+    reader.readAsDataURL(file);
+  }
+};
+</script>
+
+<script>
+const panel = document.getElementById('navigationPanel');
+const handle = document.getElementById('navigationPanelHandle');
+let isDragging = false, offsetX = 0, offsetY = 0;
+
+handle.addEventListener('mousedown', function(e) {
+  isDragging = true;
+  const rect = panel.getBoundingClientRect();
+  offsetX = e.clientX - rect.left;
+  offsetY = e.clientY - rect.top;
+  document.body.style.userSelect = 'none';
+});
+
+document.addEventListener('mousemove', function(e) {
+  if (isDragging) {
+    // Calculate new position
+    let newLeft = e.clientX - offsetX;
+    let newTop = e.clientY - offsetY;
+    // Prevent moving out of viewport
+    newLeft = Math.max(0, Math.min(window.innerWidth - panel.offsetWidth, newLeft));
+    newTop = Math.max(0, Math.min(window.innerHeight - panel.offsetHeight, newTop));
+    panel.style.left = newLeft + 'px';
+    panel.style.top = newTop + 'px';
+    panel.style.right = 'auto';
+    panel.style.bottom = 'auto';
+  }
+});
+
+document.addEventListener('mouseup', function() {
+  isDragging = false;
+  document.body.style.userSelect = '';
+});
+</script>
     <!-- Scripts -->
     <script src="{% static 'kabul/proxy.js' %}"></script>
     <script src="{% static 'kabul/js/map.js' %}"></script>
